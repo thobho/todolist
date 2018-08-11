@@ -25,6 +25,12 @@ public class Task {
         this.deadLine = deadLine;
     }
 
+    public Task(int id, String description, Priority priority, LocalDateTime deadLine){
+        this(description, deadLine);
+        this.priority = priority;
+        this.id = id;
+    }
+
     public Task(String description, LocalDateTime deadLine) {
         this(description, Priority.LOW, deadLine);
     }
@@ -34,7 +40,7 @@ public class Task {
     }
 
     public String getShortInfo() {
-        return String.format("%d | %s | %s | %s%n",
+        return String.format("%d , %s , %s , %s%n",
                 id, priority.toString(), this.description, deadLine.toString());
     }
 
@@ -56,6 +62,10 @@ public class Task {
                 priority == task.priority &&
                 Objects.equals(creationDate, task.creationDate) &&
                 Objects.equals(deadLine, task.deadLine);
+    }
+
+    public Priority getPriority() {
+        return priority;
     }
 
     @Override

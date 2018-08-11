@@ -1,7 +1,7 @@
 package com.thobho.todolis.model;
 
 public enum Priority {
-    HIGIH("Do it immediatly!!!"),
+    HIGH("Do it immediatly!!!"),
     MEDIUM("Consider doing this!"),
     LOW("Not so important...");
 
