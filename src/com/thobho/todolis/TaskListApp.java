@@ -2,22 +2,24 @@ package com.thobho.todolis;
 
 import com.thobho.todolis.model.Task;
 import com.thobho.todolis.repository.FileRepository;
+import com.thobho.todolis.repository.SqlRepository;
+import com.thobho.todolis.repository.TaskRepository;
+import com.thobho.todolis.view.ConsoleView;
+import com.thobho.todolis.view.View;
 
 import java.util.Scanner;
 
 public class TaskListApp {
 
-    private static Scanner scanner = new Scanner(System.in);
-    static FileRepository fileRepository = new FileRepository();
+    static TaskRepository taskRepository = new FileRepository();
+    static View view = new ConsoleView();
 
     public static void main(String[] args) {
-        createTask();
+        view.setupRepository(taskRepository);
+
+
+
+
     }
 
-    static void createTask(){
-        System.out.println("Create new task: \n Write description");
-        String description = scanner.nextLine();
-        Task task = new Task(description);
-        fileRepository.saveTask(task);
-    }
 }

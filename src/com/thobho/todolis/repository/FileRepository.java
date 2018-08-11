@@ -5,6 +5,7 @@ import com.thobho.todolis.model.Task;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.util.List;
 
 public class FileRepository implements TaskRepository {
 
@@ -22,13 +23,17 @@ public class FileRepository implements TaskRepository {
 
     @Override
     public void saveTask(Task task) {
-        try {
-            FileWriter fileWriter = new FileWriter(sourceFile);
+
+        try (FileWriter fileWriter = new FileWriter(sourceFile)){
             fileWriter.write(task.getShortInfo());
-            fileWriter.close();
         } catch (IOException e) {
             e.printStackTrace();
         }
+    }
+
+    @Override
+    public List<Task> getAll() {
+        return null;
     }
 
     private void handleFileNotFound(File file) {
